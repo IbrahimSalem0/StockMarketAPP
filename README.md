@@ -2,6 +2,17 @@
 
 A React Native mobile application that allows users to browse and search stocks listed on the Nasdaq exchange. The app provides real-time stock information using the Polygon.io API.
 
+## 📱 Screenshots
+<div align="center">
+  <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; justify-content: center;">
+    <!-- Each screenshot is 250px wide for better README presentation -->
+    <img src="./screenshots/splash_screen.png" width="250" alt="Splash Screen" />
+    <img src="./screenshots/stock_list.png" width="250" alt="Stock List" />
+    <img src="./screenshots/search_results.png" width="250" alt="Search Results" />
+  </div>
+</div>
+
+
 ## Features
 
 - Browse stocks listed in Nasdaq exchange
