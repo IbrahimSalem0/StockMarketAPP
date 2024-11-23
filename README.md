@@ -1,79 +1,129 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Stock Market App
 
-# Getting Started
+A React Native mobile application that allows users to browse and search stocks listed on the Nasdaq exchange. The app provides real-time stock information using the Polygon.io API.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Features
 
-## Step 1: Start the Metro Server
+- Browse stocks listed in Nasdaq exchange
+- Real-time search functionality
+- Infinite scrolling for loading more stocks
+- Pull-to-refresh for latest data
+- Responsive grid layout
+- Error handling and rate limiting protection
+- Performance optimized for large lists
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Prerequisites
 
-To start Metro, run the following command from the _root_ of your React Native project:
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v14 or later)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [React Native CLI](https://reactnative.dev/docs/environment-setup)
+- Xcode (for iOS development)
+- Android Studio (for Android development)
+- [CocoaPods](https://cocoapods.org/) (for iOS dependencies)
 
+## Installation
+
+1. Clone the repository:
 ```bash
-# using npm
-npm start
+git clone <repository-url>
+cd stock-market-app
+```
 
-# OR using Yarn
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Install iOS dependencies:
+```bash
+cd ios
+pod install
+cd ..
+```
+
+4. Set up environment variables:
+   - create  `.env`
+   - Add your Polygon.io API key to the `.env` file:
+```bash
+POLYGON_API_KEY=TINCaMq866MulC7fQQC48lH6s2sB02rJ
+```
+
+## Running the App
+
+### iOS
+```bash
+# Start Metro bundler
 yarn start
+# Run iOS app
+yarn run ios
 ```
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
+### Android
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+# Start Metro bundler
+yarn start
+# Run Android app
+yarn run android
 ```
 
-### For iOS
+## Project Structure
 
+```
+src/
+├── api/
+│   ├── client.ts        # API client configuration
+│   └── types.ts         # TypeScript interfaces for API
+├── components/
+│   ├── SearchBar.tsx    # Search input component
+│   └── StockCard.tsx    # Stock item display component
+├── screens/
+│   ├── ExploreScreen.tsx # Main screen with stock list
+│   └── SplashScreen.tsx  # Initial loading screen
+├── hooks/
+│   └── useStocks.ts     # Custom hooks for data fetching
+├── config/
+│   └── index.ts         # App configuration
+└── App.tsx              # Root component
+```
+
+## Dependencies
+
+- `@tanstack/react-query`: For data fetching and caching
+- `axios`: HTTP client
+- `react-native-config`: Environment variables management
+- `@react-navigation/native`: Navigation
+- `react-native-screens`: Native navigation utilities
+- `lodash`: Utility functions
+
+## Performance Optimizations
+
+The app includes several performance optimizations:
+- Virtualized list rendering with `FlatList`
+- Debounced search to minimize API calls
+- Memoized components and callbacks
+- Image and resource optimization
+- API response caching
+
+## Testing
+
+Run the test suite:
 ```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+npm test
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## Building for Production
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+### Android
+```bash
+cd android
+./gradlew assembleRelease
+```
+The APK will be available at `android/app/build/outputs/apk/release/app-release.apk`
 
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+### iOS
+Build the app using Xcode:
+1. Open `ios/StockMarketApp.xcworkspace`
+2. Selec
